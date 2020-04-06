@@ -27,24 +27,44 @@ s = [time,sdata];
 
 %% run after simulink simulation
 
-x = squeeze(x);
-y = squeeze(y);
-theta = squeeze(theta);
+x = squeeze(out.x);
+y = squeeze(out.y);
+theta = squeeze(out.theta);
 
 figure(1)
+subplot(1,2,1)
+plot(r(:,2))
+title('r(t) velocity profile')
+xlabel('time')
+ylabel('r value(rad/sec)')
+
+subplot(1,2,2)
+plot(s(:,2))
+title('s(t) steering profile')
+xlabel('time')
+ylabel('s value (rad/sec)')
+
+figure(2)
+subplot(1,3,1)
 plot(x)
 title('x position of robot, x(t)')
 xlabel('time')
 ylabel('x position (m)')
 
-figure(2)
+subplot(1,3,2)
 plot(y)
 title('y position of robot, y(t)')
 xlabel('time')
 ylabel('y position (m)')
 
-figure(3)
+subplot(1,3,3)
 plot(theta)
 title('theta angle of robot, theta(t)')
 xlabel('time')
 ylabel('angle (radian)')
+
+figure(3)
+plot(x,y)
+title('path of robot in x y plane')
+xlabel('x position (m)')
+ylabel('y position (m)')
